@@ -2,7 +2,6 @@
 
 namespace AcmeWidget\Test\Entities;
 
-use AcmeWidget\Interfaces\Basket;
 use AcmeWidget\Services\DeliveryFee;
 use AcmeWidget\Entities\SimpleInvoice;
 use PHPUnit\Framework\TestCase;
@@ -21,12 +20,6 @@ class DeliveryFeeTest extends TestCase
     private $deliveryFee;
 
     /**
-     * A mocked instance of a Basket - it doesn't do anything, but the
-     * requirement is there for the PriceModifier::processRules() method
-     */
-    private $basket;
-
-    /**
      * Sets up each test by creating a DeliveryFee modifier with the
      * sample thresholds given in the spec
      */
@@ -36,8 +29,6 @@ class DeliveryFeeTest extends TestCase
             5000 => 495,
             9000 => 295,
         ]);
-        $this->basket = $this->getMockBuilder(Basket::class)
-            ->getMock();
     }
 
     /**
@@ -51,7 +42,6 @@ class DeliveryFeeTest extends TestCase
     public function testFee(int $cost, int $fee): void
     {
         $items = $this->deliveryFee->processRules(
-            $this->basket,
             (new SimpleInvoice())->addLineItem('Test', $cost)
         )->getLineItems();
 

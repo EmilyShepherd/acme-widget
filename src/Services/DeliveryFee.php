@@ -32,10 +32,7 @@ class DeliveryFee implements PriceModifier
     /**
      * @inheritDoc
      */
-    public function processRules(
-        Basket $basket,
-        Invoice $invoice
-    ): Invoice
+    public function processRules(Invoice $invoice): Invoice
     {
         $totalPrice = $invoice->getTotal();
         $delivery = 0;

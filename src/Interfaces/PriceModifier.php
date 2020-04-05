@@ -12,9 +12,8 @@ interface PriceModifier
      * Runs on the given basket and modifies the given involce based on
      * the business rules of the modifier
      *
-     * @param Basket $basket
      * @param Invoice $invoice
      * @return Invoice
      */
-    public function processRules(Basket $basket, Invoice $invoice): Invoice;
+    public function processRules(Invoice $invoice): Invoice;
 }
