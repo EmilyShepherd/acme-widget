@@ -3,6 +3,7 @@
 namespace AcmeWidget\Test\Entities;
 
 use AcmeWidget\Entities\SimpleInvoice;
+use AcmeWidget\Entities\StandardProduct;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -79,6 +80,23 @@ class SimpleInvoiceTest extends TestCase
         $this->assertSame('bar', $item['foo']);
         $this->assertTrue(isset($item['foobar']));
         $this->assertSame('test', $item['foobar']);
+    }
+
+    /**
+     * Tests that adding a product line item adds the line item in the
+     * desired format
+     */
+    public function testAddProductLineItem(): void
+    {
+        $product = new StandardProduct('Test', 'T01', 400);
+        $item = (new SimpleInvoice())
+            ->addProductLineItem($product)
+            ->getLineItems()[0];
+
+        $this->assertSame('Test (T01)', $item['description']);
+        $this->assertSame(400, $item['cost']);
+        $this->assertTrue(isset($item['product']));
+        $this->assertSame($product, $item['product']);
     }
 
     /**

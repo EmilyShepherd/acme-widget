@@ -3,6 +3,7 @@
 namespace AcmeWidget\Entities;
 
 use AcmeWidget\Interfaces\Invoice;
+use AcmeWidget\Interfaces\Product;
 
 /**
  * @inheritDoc
@@ -41,6 +42,23 @@ class SimpleInvoice implements Invoice
         $invoice->total += $cost;
 
         return $invoice;
+    }
+
+    /**
+     * Adds a product as a line item to the invoice
+     *
+     * @param $item Product
+     * @return self
+     */
+    public function addProductLineItem(Product $item): Invoice
+    {
+        return $this->addLineItem(
+            $item->getName() . ' (' . $item->getProductCode() . ')',
+            $item->getBasePrice(),
+            [
+                'product' => $item
+            ]
+        );
     }
 
     /**
