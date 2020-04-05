@@ -1,0 +1,18 @@
+{
+    "name": "emily/acme-widget",
+    "description": "PoC Sales System for Acme Widget Co",
+    "type": "project",
+    "require-dev": {
+        "phpunit/phpunit": "^8.0"
+    },
+    "authors": [
+        {
+            "name": "Emily Shepherd",
+            "email": "emily@emilyshepherd.me"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {"AcmeWidget\\": "src"}
+    }
+}
