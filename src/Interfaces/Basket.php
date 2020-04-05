@@ -8,12 +8,6 @@ namespace AcmeWidget\Interfaces;
 interface Basket
 {
     /**
-     * Sets up the Basket with the ProductCatalog and an array of
-     * PriceModifier rules
-     */
-    public function __construct(ProductCatalog $catalog, array $modifiers);
-
-    /**
      * Adds a product to the basket, using its product code to look it
      * up
      *
