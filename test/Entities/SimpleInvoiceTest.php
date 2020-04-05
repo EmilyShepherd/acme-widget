@@ -61,6 +61,27 @@ class SimpleInvoiceTest extends TestCase
     }
 
     /**
+     * Tests that additional information is added onto the invoice
+     */
+    public function testAdditionalInformation(): void
+    {
+        $invoice = (new SimpleInvoice())->addLineItem(
+            'Test',
+            300,
+            [
+                'foo' => 'bar',
+                'foobar' => 'test',
+            ]
+        );
+        $item = $invoice->getLineItems()[0];
+
+        $this->assertTrue(isset($item['foo']));
+        $this->assertSame('bar', $item['foo']);
+        $this->assertTrue(isset($item['foobar']));
+        $this->assertSame('test', $item['foobar']);
+    }
+
+    /**
      * Tests adding line items, updates the total
      */
     public function getCorrectTotal(): void

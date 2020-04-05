@@ -16,8 +16,14 @@ interface Invoice
      * @param string $description A human readable line to describe the
      *      line item
      * @param string $cost The cost of the line item, in cents
+     * @param array $additionalInfo Any additional meta information for
+     *      the line item
      */
-    public function addLineItem(string $description, int $cost): self;
+    public function addLineItem(
+        string $description,
+        int $cost,
+        array $additionalInfo = [ ]
+    ): self;
 
     /**
      * Returns the list of line items with their costs

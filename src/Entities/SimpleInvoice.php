@@ -26,14 +26,18 @@ class SimpleInvoice implements Invoice
     /**
      * @inheritDoc
      */
-    public function addLineItem(string $description, int $cost): Invoice
+    public function addLineItem(
+        string $description,
+        int $cost,
+        array $additionalInfo = [ ]
+    ): Invoice
     {
         $invoice = clone $this;
 
         $invoice->items[] = [
             'description' => $description,
             'cost' => $cost,
-        ];
+        ] + $additionalInfo;
         $invoice->total += $cost;
 
         return $invoice;
