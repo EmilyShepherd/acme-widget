@@ -13,6 +13,9 @@
     ],
     "require": {},
     "autoload": {
-        "psr-4": {"AcmeWidget\\": "src"}
+        "psr-4": {
+            "AcmeWidget\\": "src",
+            "AcmeWidget\\Test\\": "test"
+        }
     }
 }
