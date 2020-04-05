@@ -20,6 +20,13 @@ interface Invoice
     public function addLineItem(string $description, int $cost): self;
 
     /**
+     * Returns the list of line items with their costs
+     *
+     * @return array
+     */
+    public function getLineItems(): array;
+
+    /**
      * Returns the total cost of the invoice
      *
      * @return int The cost in cents
