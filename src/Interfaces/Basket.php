@@ -14,7 +14,7 @@ interface Basket
      * @param string $productCode The code of the product to add to the
      *      basket
      */
-    public function addProduct(string $procuctCode): void;
+    public function addProduct(string $productCode): void;
 
     /**
      * Gets the total of the basket
