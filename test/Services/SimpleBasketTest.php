@@ -2,11 +2,7 @@
 
 namespace AcmeWidget\Test\Entities;
 
-use AcmeWidget\Services\SimpleBasket;
-use AcmeWidget\Entities\StandardProduct;
-use AcmeWidget\Services\DeliveryFee;
-use AcmeWidget\Services\BuyXGetYDiscount;
-use AcmeWidget\Entities\ArrayCatalog;
+use AcmeWidget\App;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -28,18 +24,7 @@ class SimpleBasketTest extends TestCase
      */
     public function setUp(): void
     {
-        $redWidget = new StandardProduct('Red Widget', 'R01', 3295);
-        $this->basket = new SimpleBasket(
-            new ArrayCatalog([
-                $redWidget,
-                new StandardProduct('Green Widget', 'G01', 2495),
-                new StandardProduct('Blue Widget', 'B01', 795),
-            ]),
-            [
-                new BuyXGetYDiscount($redWidget, 1, 50),
-                new DeliveryFee([5000 => 495, 9000 => 295])
-            ]
-        );
+        $this->basket = App::getBasket();
     }
 
     /**
